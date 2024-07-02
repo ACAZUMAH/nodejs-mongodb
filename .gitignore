@@ -1,0 +1,5 @@
+#dependeciess
+node_modules
+
+#envs
+.env 
