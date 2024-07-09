@@ -1,5 +1,5 @@
-import { employeeModel } from "./mongooseModels/employeeModel";
-import { connectToDB, close } from "./mongoconfig";
+import { employeeModel } from "../mongooseModels/employeeModel";
+import { connectToDB, close } from "../mongoconfig";
 
 connectToDB().then(() =>{
     return employeeModel.deleteOne({ salary: { $lt: 4500 }, Department: 'project manager' })

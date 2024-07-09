@@ -38,7 +38,7 @@ export  const  RegisterValidation = {
 }
 
 export const loginValidation = {
-    usernameOrEmail: {
+    username: {
         notEmpty: {
             errorMessage: 'username or email required'
         },
@@ -56,6 +56,44 @@ export const loginValidation = {
                 max: 16
             },
             errorMessage: 'password must be between 6 and 16 characters'
+        }
+    }
+}
+export const paymentValidation = {
+    transaction_id: {
+        notEmpty:{
+            errorMessage: 'transaction id required'
+        },
+        isString:{
+            errorMessage: 'id must be a string'
+        }
+    },
+    vendor_id: {
+        notEmpty:{
+            errorMessage: 'vendor id required'
+        },
+        isString:{
+            errorMessage: 'id must be a string'
+        }
+    },
+    invoice_no: {
+        notEmpty:{
+            errorMessage: 'invoice number required'
+        }
+    },
+    amount: {
+        notEmpty:{
+            errorMessage: 'amount required'
+        }
+    },
+    balance_amount: {
+        notEmpty:{
+            errorMessage: 'amount required'
+        }
+    },
+    payment_status:{
+        notEmpty: {
+            errorMessage: 'payment status required'
         }
     }
 }

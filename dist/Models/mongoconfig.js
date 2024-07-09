@@ -14,19 +14,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.close = exports.connectToDB = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
+require('dotenv').config();
+const atlas_url = process.env.DATABASE_URL;
+//console.log(atlas_url)
 const options = {
-    useUnifiedTopology: true
+    //useNewUrlParser: true,
+    //useUnifiedTopology: true,
+    autoIndex: true
 };
-const url = 'mongodb://localhost:27017/employeeDB';
 const connectToDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    mongoose_1.default.connect(url).then(() => {
-        return 'connected';
-    }).catch((error) => {
+    try {
+        if (!atlas_url) {
+            throw new Error('Database URL not found');
+        }
+        else {
+            yield mongoose_1.default.connect(atlas_url, options);
+            console.log('connected');
+        }
+    }
+    catch (error) {
         console.log(error);
-    });
+    }
 });
 exports.connectToDB = connectToDB;
-const close = () => {
-    mongoose_1.default.connection.close();
-};
+const close = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield mongoose_1.default.connection.close();
+});
 exports.close = close;
+// async function connect(){
+//     await connectToDB()
+// }
+// connect() 

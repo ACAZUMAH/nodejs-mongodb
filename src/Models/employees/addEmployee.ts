@@ -1,7 +1,7 @@
-import { employeeModel } from "./mongooseModels/employeeModel";
-import { connectToDB,close } from "./mongoconfig";
+import { employeeModel } from "../mongooseModels/employeeModel";
+import { connectToDB,close } from "../mongoconfig";
 
-connectToDB()
+//connectToDB()
 
 let newEmployee = new employeeModel({
     emp_name: 'caleb',
